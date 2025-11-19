@@ -1,0 +1,70 @@
+.pg-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  height: 100vh;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.pg-pane {
+  border: 1px solid #444;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #1e1e1e;
+}
+
+.pg-left {
+  display: flex;
+}
+
+.pg-textarea {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  color: #eaeaea;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.pg-right {
+  position: relative;
+}
+
+.pg-loading {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.4);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.pg-preview {
+  height: 100%;
+  overflow: auto;
+  padding: 16px;
+  color: #eaeaea;
+}
+
+.pg-preview table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.pg-preview th, .pg-preview td {
+  border: 1px solid #555;
+  padding: 6px 8px;
+}
+
+.pg-preview code {
+  background: #2a2a2a;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
