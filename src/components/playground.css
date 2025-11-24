@@ -1,6 +1,6 @@
 .pg-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 4fr;
   gap: 12px;
   height: 100vh;
   padding: 12px;
@@ -91,6 +91,12 @@
   overflow: auto;
   padding: 16px;
   color: #eaeaea;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  text-align: left;
 }
 
 .pg-preview table {
@@ -107,4 +113,48 @@
   background: #2a2a2a;
   padding: 2px 4px;
   border-radius: 4px;
+}
+
+/* Markdown directive: badge */
+.pg-preview .md-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0 4px;
+}
+
+.pg-preview .md-badge-default {
+  background: #333;
+  color: #eee;
+}
+
+.pg-preview .md-badge-success {
+  background: #144f2b;
+  color: #5ff199;
+}
+
+.pg-preview .md-badge-warning {
+  background: #4f3a14;
+  color: #ffd666;
+}
+
+/* Markdown directive: callout */
+.pg-preview .md-callout {
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin: 12px 0;
+  border-left: 4px solid #555;
+  background: #252525;
+}
+
+.pg-preview .md-callout-note {
+  border-color: #3b82f6;
+  background: #0b1726;
+}
+
+.pg-preview .md-callout-danger {
+  border-color: #ef4444;
+  background: #2a1010;
 }

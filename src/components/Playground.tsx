@@ -3,7 +3,7 @@ import { renderMarkdown } from '../lib/markdown'
 import './playground.css'
 import { Smoother } from '../lib/smoother'
 
-const DEFAULT_MD = `# 前端 Markdown 渲染器测试样张
+const DEFAULT_MD = String.raw`# 前端 Markdown 渲染器测试样张
 
 这是一个用于测试渲染器功能的综合示例。
 
@@ -24,7 +24,7 @@ const DEFAULT_MD = `# 前端 Markdown 渲染器测试样张
 ### 脚注
 这是一个包含脚注的句子[^1]。
 
-[^1]: 这是脚注的具体内容。
+[^1]: 这是脚注的具体内容，并无任何解释，悬停应该可以看见。
 
 ## 公式渲染
 
@@ -33,6 +33,8 @@ const DEFAULT_MD = `# 前端 Markdown 渲染器测试样张
 $$
 E_k = \frac{1}{2}mv^2
 $$
+
+这个公式是经典力学的基础。
 
 这个公式是经典力学的基础。
 
