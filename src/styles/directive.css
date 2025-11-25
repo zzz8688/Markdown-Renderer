@@ -1,0 +1,30 @@
+/* 徽章样式 */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0 4px;
+}
+.badge-success { background-color: #d4edda; color: #155724; }
+.badge-warning { background-color: #fff3cd; color: #856404; }
+.badge-danger { background-color: #f8d7da; color: #721c24; }
+.badge-info { background-color: #d1ecf1; color: #0c5460; }
+
+/* 警告框样式 */
+.callout {
+    margin: 16px 0;
+    padding: 16px;
+    border-radius: 8px;
+    border-left: 4px solid;
+}
+.callout-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.callout-content { margin: 0; }
+.callout-default { border-color: #ccc; background-color: #f9f9f9; }
+.callout-danger { border-color: #dc3545; background-color: #fef7fb; }
+.callout-warning { border-color: #ffc107; background-color: #fffaf0; }
+.callout-success { border-color: #28a745; background-color: #f0fdf4; }

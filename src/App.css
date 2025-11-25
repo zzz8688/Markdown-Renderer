@@ -1,42 +1,222 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* 全局重置 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, sans-serif;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+    overflow: hidden;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    gap: 30px;
+    background: #1e1e1e;
+    color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.editor-section, .preview-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.card {
-  padding: 2em;
+.editor-section h3, .preview-section h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 16px;
 }
 
-.read-the-docs {
-  color: #888;
+.markdown-input {
+    width: 100%;
+    height: calc(100% - 40px);
+    padding: 15px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #2d2d2d;
+    color: #fff;
+    font-family: monospace;
+    font-size: 14px;
+    resize: none;
+    outline: none;
+}
+
+.markdown-input:focus {
+    border-color: #61dafb;
+}
+
+.options-section {
+    padding: 10px 15px;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    display: flex;
+    align-items: center;
+}
+
+.option-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.option-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #61dafb;
+}
+
+.preview-content {
+    width: 100%;
+    height: calc(100% - 40px);
+    padding: 15px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #2d2d2d;
+    overflow-y: auto;
+    line-height: 1.8;
+}
+
+/* Markdown语法样式优化 */
+.preview-content h1, .preview-content h2, .preview-content h3, 
+.preview-content h4, .preview-content h5, .preview-content h6 {
+    margin: 1rem 0;
+    color: #61dafb;
+}
+
+.preview-content h1 {
+    font-size: 2rem;
+}
+
+.preview-content h2 {
+    font-size: 1.5rem;
+}
+
+.preview-content p {
+    margin: 1rem 0;
+}
+
+.preview-content ul, .preview-content ol {
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+.preview-content li {
+    margin: 0.5rem 0;
+}
+
+.preview-content a {
+    color: #61dafb;
+    text-decoration: none;
+}
+
+.preview-content a:hover {
+    text-decoration: underline;
+}
+
+.preview-content table {
+    border-collapse: collapse;
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.preview-content table th, .preview-content table td {
+    border: 1px solid #444;
+    padding: 0.5rem 1rem;
+    text-align: left;
+}
+
+.preview-content table th {
+    background: #3a3a3a;
+}
+
+.preview-content code {
+    background: #3a3a3a;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.preview-content pre {
+    background: #3a3a3a;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.preview-content pre code {
+    background: transparent;
+    padding: 0;
+    display: block;
+}
+
+/* KaTeX 数学公式样式 */
+.preview-content .katex {
+    font-size: 1.1em !important;
+}
+
+.katex-display {
+    margin: 1.5em 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* 行内徽章样式 */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875em;
+    font-weight: 500;
+    margin: 0 0.25rem;
+    color: #fff;
+}
+
+.badge-success {
+    background-color: #10b981;
+}
+
+.badge-warning {
+    background-color: #f59e0b;
+}
+
+.badge-danger {
+    background-color: #ef4444;
+}
+
+/* 提示框样式 */
+.callout {
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid #61dafb;
+    background: #3a3a3a;
+}
+
+.callout-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.callout-info {
+    border-left-color: #3b82f6;
+}
+
+.callout-warning {
+    border-left-color: #f59e0b;
+}
+
+.callout-danger {
+    border-left-color: #ef4444;
 }
