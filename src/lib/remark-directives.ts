@@ -1,21 +1,34 @@
+/**
+  * remark 指令语法处理插件
+  *
+  * 解析来自 remark-directive 的三类节点：
+  * - textDirective   行内指令 :badge[TXT]{type="success"}
+  * - leafDirective   叶子指令
+  * - containerDirective 容器指令 :::callout[type=note] ... :::
+  *
+  * 本插件将这些指令节点映射为对应的 HAST 元素（通过 data.hName / data.hProperties）， 
+  * 以便后续 remark-rehype 在生成 HTML 时正确输出。
+  */
 import type { Root } from 'mdast'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
+/**
+ * 生成器：返回一个对 MDAST 的转换函数
+ */
 const remarkDirectivesPlugin: Plugin<[], Root> = () => {
   return (tree) => {
-    console.log('Directive plugin running, tree:', tree)
-    let directiveCount = 0
-    
-    // 先检查是否有任何指令节点
+    // 遍历整棵树，寻找三类指令节点
     visit(tree, (node: any) => {
-      if (node.type === 'textDirective' || node.type === 'leafDirective' || node.type === 'containerDirective') {
-        directiveCount++
-        console.log(`Found directive: ${node.name}`, node)
-        
+      if (
+        node.type === 'textDirective' ||
+        node.type === 'leafDirective' ||
+        node.type === 'containerDirective'
+      ) {
         const data = node.data || (node.data = {})
 
         if (node.name === 'badge') {
+          // :badge 指令 -> <span class="md-badge md-badge-{type}">...</span>
           const type = node.attributes?.type || 'default'
           data.hName = 'span'
           data.hProperties = {
@@ -24,6 +37,7 @@ const remarkDirectivesPlugin: Plugin<[], Root> = () => {
         }
 
         if (node.name === 'callout') {
+          // :::callout 指令 -> <div class="md-callout md-callout-{type}">...</div>
           const type = node.attributes?.type || 'note'
           data.hName = 'div'
           data.hProperties = {
@@ -32,17 +46,6 @@ const remarkDirectivesPlugin: Plugin<[], Root> = () => {
         }
       }
     })
-    
-    console.log(`Total directives found: ${directiveCount}`)
-    
-    // 如果没有找到指令，检查原始文本中是否包含指令语法
-    if (directiveCount === 0) {
-      visit(tree, 'text', (node: any) => {
-        if (node.value && (node.value.includes(':badge') || node.value.includes(':::callout'))) {
-          console.log('Found directive syntax in text node:', node.value)
-        }
-      })
-    }
   }
 }
 
