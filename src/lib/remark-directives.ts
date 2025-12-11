@@ -18,8 +18,9 @@ import { visit } from 'unist-util-visit'
  */
 const remarkDirectivesPlugin: Plugin<[], Root> = () => {
   return (tree) => {
-    // 遍历整棵树，寻找三类指令节点
+    // 遍历MDAST整棵树，寻找三类指令节点
     visit(tree, (node: any) => {
+      //只对MDAST的三类指令节点进行处理
       if (
         node.type === 'textDirective' ||
         node.type === 'leafDirective' ||

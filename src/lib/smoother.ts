@@ -23,7 +23,7 @@
   */
  export class Smoother {
   private queue = '' // 待输出内容
-  private output = '' // 已输出内容
+  private output = '' // 已输出内容 tick()返回值
 
   private velocity = 0
   private maxVelocity: number

@@ -283,6 +283,7 @@ export default function Playground() {
     function loop() {
       if (!running) return
       //smoother.tick()逐字吐出
+      // next===output是到当前为止所有已经输出的完整前缀字符串
       const next = smoother.tick()
       if (next !== lastText) {
         //按需触发渲染
